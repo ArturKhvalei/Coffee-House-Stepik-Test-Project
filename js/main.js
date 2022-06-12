@@ -18,6 +18,12 @@ function sum(value, count) {
     currentValue = value * count;
     total += currentValue;
     resultElem.innerHTML = total;
+    if(value !=0 && count > 1){
+    currentValue = value * count;
+    console.log(currentValue, value, count);
+    total -= (currentValue - value);
+    resultElem.innerHTML = total;
+    }
   }
   else {
     total -= currentValue;
@@ -46,10 +52,13 @@ goodsElements.forEach((element, i) => {
 
 countElements.forEach((element, i) => {
   element.addEventListener("change", function () {
+    countElements[i] = parseInt(element.value);
     countGoods[i] = parseInt(element.value);
-    if (countGoods[i] >= 0) {
-      currentValue = selectedGoods[i] * countGoods[i];
-      sum(selectedGoods[i], countGoods[i]);
+    sum(selectedGoods[i], countGoods[i]);
+    if(countGoods[i] <= 0){
+      alert("Пожалуйста, введите значение больше нуля");
+      countElements[i].value = 1;
+      countGoods[i] = 1;
     }
   });
 });
