@@ -51,6 +51,11 @@ countElements.forEach((element, i) => {
   });
 });
 
-btn.addEventListener("click", function() {
-  alert("Заказчик: " + userSurname.value + " " + userName.value +"\n" + "Итого: " + totalGoods.reduce((counter, element) => counter + element, 0) + " р.");
+btn.addEventListener("click", function () {
+  if (userName.value == 0 || userSurname.value == 0) {
+    alert("Пожалуйста, введите полностью имя и фамилию");
+  }
+  else {
+    alert("Заказчик: " + userSurname.value + " " + userName.value + "\n" + "Итого: " + totalGoods.reduce((counter, element) => counter + element, 0) + " р.");
+  }
 });
