@@ -38,7 +38,7 @@ countElements.forEach((element, i) => {
     const subtotalGoods = parseInt(element.value);
     countElements[i] = subtotalGoods;
     if (selectedGoods[i] === 1) {
-      if (Number.isNaN(subtotalGoods) && subtotalGoods >= 1 && Number.isInteger(subtotalGoods)) {
+      if (!Number.isNaN(subtotalGoods) && subtotalGoods >= 1 && Number.isInteger(subtotalGoods)) {
         sum(prices[i], subtotalGoods, i);
       } else {
         countElements[i].value = 1;
@@ -49,4 +49,8 @@ countElements.forEach((element, i) => {
       countElements[i].value = 0;
     }
   });
+});
+
+btn.addEventListener("click", function() {
+  alert("Заказчик: " + userSurname.value + " " + userName.value +"\n" + "Итого: " + totalGoods.reduce((counter, element) => counter + element, 0) + " р.");
 });
